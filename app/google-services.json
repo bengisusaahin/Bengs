@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "711569294461",
+    "project_id": "bengs-9df73",
+    "storage_bucket": "bengs-9df73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711569294461:android:c69401ec93d21c75c89d14",
+        "android_client_info": {
+          "package_name": "com.bengisu.bengs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711569294461-cqmh4b5fc4fq13g64u1jks68nsu275jj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6PU6JnHS2rF7KUtEzECMGF0zbbvqXTRM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711569294461-cqmh4b5fc4fq13g64u1jks68nsu275jj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
