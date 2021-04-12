@@ -17,18 +17,22 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SignupActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    EditText editTextName;
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        editTextName=(EditText) findViewById(R.id.signup_editTextName);
+        name="";
+
         mAuth= FirebaseAuth.getInstance();
     }
 
     public void createUser(View view){
-        EditText editTextName =(EditText) findViewById(R.id.signup_editTextName);
-        String name = editTextName.getText().toString();
+        name= editTextName.getText().toString();
 
         EditText editTextSurname =(EditText) findViewById(R.id.signup_editTextSurname);
         String surname = editTextSurname.getText().toString();
@@ -62,6 +66,7 @@ public class SignupActivity extends AppCompatActivity {
 
     public void loginPage(View view){
         Intent intentLogin = new Intent(this, LoginActivity.class);
+        intentLogin.putExtra("userName",name);
         startActivity(intentLogin);
     }
 }

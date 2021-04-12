@@ -9,22 +9,28 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    TextView textViewUser;
+    String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_settings);
 
         mAuth=FirebaseAuth.getInstance();
+
+        Intent intentForName=getIntent();
+        userName= intentForName.getStringExtra("userName");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        TextView textViewUser= (TextView)findViewById(R.id.main_textViewUser);
-        textViewUser.setText("Welcome, "+mAuth.getCurrentUser().getEmail());
+        textViewUser= (TextView)findViewById(R.id.settings_textViewUser);
+        //textViewUser.setText("Welcome, "+mAuth.getCurrentUser().getEmail()+","+userName); //su an icin null donuyo firebase detaillerinden sonra eklicem
+        textViewUser.setText("Welcome, "+mAuth.getCurrentUser().getEmail()+",");
     }
 
     public void logout(View view){

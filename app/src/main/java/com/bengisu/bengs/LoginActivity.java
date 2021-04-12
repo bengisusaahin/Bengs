@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if(mAuth.getCurrentUser()!=null){ //When app is start, we see Homepage(now logout)
-            Intent mainIntent = new Intent(this,MainActivity.class);
+            Intent mainIntent = new Intent(this, SettingsActivity.class);
             startActivity(mainIntent);
         }
     }
@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         EditText editTextPassword=(EditText) findViewById(R.id.login_editTextPassword);
         String password= editTextPassword.getText().toString();
 
-        Intent mainIntent = new Intent(this,MainActivity.class);
+        Intent mainIntent = new Intent(this, SettingsActivity.class);
 
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
