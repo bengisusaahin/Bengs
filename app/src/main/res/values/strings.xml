@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Bengs</string>
+    <string name="home_value">Homepage</string>
+    <string name="categories_value">Categories</string>
+    <string name="favorites_value">Favorites</string>
+    <string name="cart_value">Cart</string>
+    <string name="account_value">Account</string>
+    <string name="home_txt">Homepage</string>
+    <string name="categories_txt">Categories</string>
+    <string name="favorites_txt">Favorites</string>
+    <string name="cart_txt">Cart</string>
+    <string name="account_txt">Account</string>
 </resources>

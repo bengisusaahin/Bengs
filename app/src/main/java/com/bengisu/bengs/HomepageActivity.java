@@ -1,51 +1,71 @@
 package com.bengisu.bengs;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class HomepageActivity extends AppCompatActivity {
+    TabLayout tabLayout;
+    ViewPager viewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
 
-        GridView gridView = findViewById(R.id.homepage_gridview);
-        ListView listView = findViewById(R.id.homepage_listview);
-        //ImageView imageView = findViewById(R.id.homepage_shop1);
+        tabLayout = findViewById(R.id.tabLayout);
+        viewPager = findViewById(R.id.viewPager);
 
-        //Data
-        /*ArrayList<String> news = new ArrayList<>();
-        news.add("New Collection");
-        news.add("Just for You");
-        news.add("Coupon");*/
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.home_txt));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.categories_txt));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.favorites_txt));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.cart_txt));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.account_txt));
 
-        /*ArrayList<String> shopsNames = new ArrayList<>();
-        shopsNames.add("Mavi");
-        shopsNames.add("Stradivarius");
-        shopsNames.add("Bershka");
-        shopsNames.add("Pull and Bear");
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        Bitmap mavi = BitmapFactory.decodeResource(getApplicationContext().getResources(),R.drawable.mavi);
-        Bitmap stradivarius = BitmapFactory.decodeResource(getApplicationContext().getResources(),R.drawable.stradivarius);
+        final MyAdapter adapter=new MyAdapter(this,getSupportFragmentManager(),tabLayout.getTabCount());
 
-        ArrayList<Bitmap>shopsImages = new ArrayList<>();
-        shopsImages.add(mavi);
-        shopsImages.add(stradivarius);*/
-        //ListView
-        /*ArrayAdapter adapterNews = new ArrayAdapter(this, android.R.layout.simple_list_item_1,news);
-        gridView.setAdapter(adapterNews);*/
-        gridView.setAdapter(new ImageAdapter(this));
-        //ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,shopsNames);
-        listView.setAdapter(new ImageAdapterShops(this));
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
     }
+
 }
