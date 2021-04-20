@@ -32,7 +32,7 @@ public class homepageTab extends Fragment {
     private ShopsAdapter shopsAdapter;
     private List<Shops> sShops;
     private DatabaseReference databaseReference;
-
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     public homepageTab(){
 
     }
@@ -62,16 +62,16 @@ public class homepageTab extends Fragment {
         sRecyclerView = view.findViewById(R.id.recyclerView);
         sRecyclerView.setHasFixedSize(true);
 
-        RecyclerView.LayoutManager layoutManager= new GridLayoutManager(getActivity(),2);
+        RecyclerView.LayoutManager layoutManager= new GridLayoutManager(getContext(),1);
         sRecyclerView.setLayoutManager(layoutManager);
 
         sShops=new ArrayList<>();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Shops");
+        databaseReference = firebaseDatabase.getInstance().getReference("Shops");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot postSnapshot:snapshot.getChildren()){
-                    Shops shop = postSnapshot.getValue(Shops.class);
+                    Shops shop = new Shops(postSnapshot.child("image").getValue().toString());
                     sShops.add(shop);
                 }
                 shopsAdapter= new ShopsAdapter(getActivity(),sShops);

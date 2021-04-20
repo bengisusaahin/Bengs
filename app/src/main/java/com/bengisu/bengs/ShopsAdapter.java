@@ -32,7 +32,8 @@ public class ShopsAdapter extends RecyclerView.Adapter<ShopsAdapter.ImageViewHol
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         Shops shop = mShops.get(position);
-        Picasso.get().load(shop.getShopImage()).into(holder.shopImg);
+        Picasso.get().load(shop.getShopImage()).placeholder(R.drawable.ic_launcher_background)
+                .fit().centerCrop().into(holder.shopImg);
     }
 
     @Override
