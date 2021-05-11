@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class NotificationsActivity extends AppCompatActivity {
+public class ActivityNotifications extends AppCompatActivity {
     TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

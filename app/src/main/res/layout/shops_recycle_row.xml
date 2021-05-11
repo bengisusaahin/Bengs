@@ -12,4 +12,6 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_launcher_background"
         tools:ignore="VectorDrawableCompat" />
+
+
 </LinearLayout>

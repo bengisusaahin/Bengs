@@ -15,7 +15,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class SignupActivity extends AppCompatActivity {
+public class ActivitySignup extends AppCompatActivity {
     private FirebaseAuth mAuth;
     EditText editTextName;
     String name;
@@ -47,7 +47,7 @@ public class SignupActivity extends AppCompatActivity {
         String confirmPassword = editTextConfirmPassword.getText().toString();
 
         if (!password.equals(confirmPassword)) {
-            Toast.makeText(SignupActivity.this, "Password and Confirm password must be the same.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ActivitySignup.this, "Password and Confirm password must be the same.", Toast.LENGTH_SHORT).show();
         }else{
             mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
@@ -55,8 +55,10 @@ public class SignupActivity extends AppCompatActivity {
                     if (task.isSuccessful()){
                         FirebaseUser user  =mAuth.getCurrentUser();
                         System.out.println(user.getEmail());
+                        Intent intent = new Intent(getApplicationContext(), ActivityMain.class);
+                        startActivity(intent);
                     }else{
-                        Toast.makeText(SignupActivity.this,task.getException().getMessage() , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ActivitySignup.this,task.getException().getMessage() , Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -65,7 +67,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void loginPage(View view){
-        Intent intentLogin = new Intent(this, LoginActivity.class);
+        Intent intentLogin = new Intent(this, ActivityLogin.class);
         intentLogin.putExtra("userName",name);
         startActivity(intentLogin);
     }

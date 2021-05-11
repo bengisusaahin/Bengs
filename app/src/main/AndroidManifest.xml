@@ -9,18 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bengs">
-        <activity android:name=".NotificationsActivity"></activity>
-        <activity android:name=".SignupActivity"></activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".HomepageActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".ActivityNotifications"></activity>
+        <activity android:name=".ActivitySignup"></activity>
+        <activity android:name=".ActivityLogin" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".ActivityMain">
+
+        </activity>
     </application>
 
 </manifest>

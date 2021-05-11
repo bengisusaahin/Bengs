@@ -26,20 +26,20 @@ public class MyAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                homepageTab homepageTabFrag = new homepageTab();
-                return homepageTabFrag;
+                tabHomepage tabHomepageFrag = new tabHomepage();
+                return tabHomepageFrag;
             case 1:
-                categoriesTab categoriesTabFrag = new categoriesTab();
-                return categoriesTabFrag;
+                tabCategories tabCategoriesFrag = new tabCategories();
+                return tabCategoriesFrag;
             case 2:
-                favoritesTab favoritesTabFrag = new favoritesTab();
-                return favoritesTabFrag;
+                tabFavorites tabFavoritesFrag = new tabFavorites();
+                return tabFavoritesFrag;
             case 3:
-                cartTab cartTabFrag = new cartTab();
-                return cartTabFrag;
+                tabCart tabCartFrag = new tabCart();
+                return tabCartFrag;
             case 4:
-                accountTab accountTabFrag = new accountTab();
-                return accountTabFrag;
+                tabAccount tabAccountFrag = new tabAccount();
+                return tabAccountFrag;
             default:
                 return null;
         }
