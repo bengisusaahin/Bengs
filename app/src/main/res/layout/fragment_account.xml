@@ -101,17 +101,18 @@
         app:layout_constraintVertical_bias="0.545" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textViewHello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello"
-        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/account_details"
         app:layout_constraintEnd_toStartOf="@+id/account_notifications"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.066"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.271" />
+        app:layout_constraintVertical_bias="0.22" />
 
     <ImageView
         android:id="@+id/imageView2"
