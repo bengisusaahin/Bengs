@@ -23,6 +23,14 @@ public class tabAccount extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_account,container,false);
+        Button notifications = (Button)view.findViewById(R.id.account_notifications);
+        notifications.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentToNotifications = new Intent(getActivity(), ActivityNotifications.class);
+                startActivity(intentToNotifications);
+            }
+        });
         mAuth=FirebaseAuth.getInstance();
         Button logout = (Button)view.findViewById(R.id.account_logout);
         logout.setOnClickListener(new View.OnClickListener() {

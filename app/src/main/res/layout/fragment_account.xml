@@ -8,20 +8,41 @@
 
 
     <Button
-        android:id="@+id/account_logout"
-        android:layout_width="267dp"
+        android:id="@+id/account_notifications"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="2dp"
+        android:insetTop="4dp"
+        android:insetRight="4dp"
+        android:textSize="8sp"
+        app:icon="@android:drawable/ic_popup_reminder"
+        app:iconPadding="3dp"
+        app:iconTint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/tabLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/searchView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="UnknownIdInLayout" />
+
+    <Button
+        android:id="@+id/account_details"
+        android:layout_width="300dp"
         android:layout_height="60dp"
-        android:text="Logout"
+        android:text="Personal Details"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.692" />
+        app:layout_constraintVertical_bias="0.145" />
 
     <Button
         android:id="@+id/account_help"
-        android:layout_width="267dp"
+        android:layout_width="300dp"
         android:layout_height="60dp"
         android:text="Help"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,47 +50,11 @@
         app:layout_constraintHorizontal_bias="0.881"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.567" />
-
-    <Button
-        android:id="@+id/account_messages"
-        android:layout_width="267dp"
-        android:layout_height="60dp"
-        android:text="Messages"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.881"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.43" />
-
-    <Button
-        android:id="@+id/account_favorites"
-        android:layout_width="267dp"
-        android:layout_height="60dp"
-        android:text="Favorites"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.881"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.294" />
-
-    <Button
-        android:id="@+id/account_details"
-        android:layout_width="267dp"
-        android:layout_height="60dp"
-        android:text="Personal Details"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.889"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.028" />
+        app:layout_constraintVertical_bias="0.681" />
 
     <Button
         android:id="@+id/account_settings"
-        android:layout_width="267dp"
+        android:layout_width="300dp"
         android:layout_height="60dp"
         android:text="Settings"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -77,5 +62,127 @@
         app:layout_constraintHorizontal_bias="0.881"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.163" />
+        app:layout_constraintVertical_bias="0.278" />
+
+    <Button
+        android:id="@+id/account_favorites"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:text="Favorites"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.408" />
+
+    <Button
+        android:id="@+id/account_logout"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:text="Logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.806" />
+
+    <Button
+        android:id="@+id/account_messages"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:text="Messages"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.545" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/account_details"
+        app:layout_constraintEnd_toStartOf="@+id/account_notifications"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.271" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:src="@drawable/user"
+        app:layout_constraintBottom_toBottomOf="@+id/account_details"
+        app:layout_constraintEnd_toStartOf="@+id/account_details"
+        app:layout_constraintHorizontal_bias="0.363"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/account_details"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:src="@drawable/settings"
+        app:layout_constraintBottom_toBottomOf="@+id/account_settings"
+        app:layout_constraintEnd_toStartOf="@+id/account_settings"
+        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/account_settings"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:src="@drawable/favorites"
+        app:layout_constraintBottom_toBottomOf="@+id/account_favorites"
+        app:layout_constraintEnd_toStartOf="@+id/account_favorites"
+        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/account_favorites"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:src="@drawable/messages"
+        app:layout_constraintBottom_toBottomOf="@+id/account_messages"
+        app:layout_constraintEnd_toStartOf="@+id/account_messages"
+        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/account_messages"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="50dp"
+        android:layout_height="58dp"
+        android:src="@drawable/help"
+        app:layout_constraintBottom_toBottomOf="@+id/account_help"
+        app:layout_constraintEnd_toStartOf="@+id/account_help"
+        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/account_help"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:src="@drawable/logout"
+        app:layout_constraintBottom_toBottomOf="@+id/account_logout"
+        app:layout_constraintEnd_toStartOf="@+id/account_logout"
+        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/account_logout"
+        app:layout_constraintVertical_bias="1.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

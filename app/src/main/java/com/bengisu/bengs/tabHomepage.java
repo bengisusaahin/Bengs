@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,11 +16,18 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.smarteist.autoimageslider.SliderAnimations;
+import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,14 +35,18 @@ import java.util.List;
 import me.relex.circleindicator.CircleIndicator;
 
 public class tabHomepage extends Fragment {
-    ViewPager viewPager;
-    CircleIndicator circleIndicator;
-
+    //ViewPager viewPager;
+    //CircleIndicator circleIndicator;
     private RecyclerView sRecyclerView;
     private ShopsAdapter shopsAdapter;
     private List<Shops> sShops;
     private DatabaseReference databaseReference;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+
+    private SliderAdapter adapter;
+    private ArrayList<SliderData> sliderDataArrayList;
+    FirebaseFirestore dbfs;
+    private SliderView sliderView;
     public tabHomepage(){
 
     }
@@ -52,11 +64,17 @@ public class tabHomepage extends Fragment {
                 startActivity(intentToNotifications);
             }
         });
-        showAnnouncements(view);
+        TextView textView = view.findViewById(R.id.homepage_textview);
+        textView.setText("Discover the New Announcements!");
+        //showAnnouncements(view);
+        sliderDataArrayList = new ArrayList<>();
+        sliderView = view.findViewById(R.id.slider);
+        dbfs = FirebaseFirestore.getInstance();
+        loadImages();
         showShops(view);
         return view;
     }
-    public void showAnnouncements(View view){
+    /*public void showAnnouncements(View view){
         viewPager= view.findViewById(R.id.viewPager);
         circleIndicator = view.findViewById(R.id.circleIndicator);
 
@@ -68,6 +86,35 @@ public class tabHomepage extends Fragment {
         AnnouncementsAdapter myAdapter = new AnnouncementsAdapter(imageList);
         viewPager.setAdapter(myAdapter);
         circleIndicator.setViewPager(viewPager);
+    }*/
+    private void loadImages() {
+        dbfs.collection("Slider").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                    SliderData sliderData = documentSnapshot.toObject(SliderData.class);
+                    SliderData model = new SliderData();
+
+                    model.setImgUrl(sliderData.getImgUrl());
+
+                    sliderDataArrayList.add(model);
+
+                    adapter = new SliderAdapter(getActivity(), sliderDataArrayList);
+
+                    sliderView.setSliderAdapter(adapter);
+                    sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
+                    sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
+                    sliderView.setScrollTimeInSec(3);
+                    sliderView.setAutoCycle(true);
+                    sliderView.startAutoCycle();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "Fail to load slider data..", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     public void showShops(View view){
         sRecyclerView = view.findViewById(R.id.recyclerView);

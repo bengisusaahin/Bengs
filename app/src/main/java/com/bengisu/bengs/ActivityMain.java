@@ -20,11 +20,11 @@ public class ActivityMain extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
 
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.home_txt));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.categories_txt));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.favorites_txt));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.cart_txt));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.account_txt));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.homepage));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.categories));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.tabfavorites));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.cart));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.account));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
