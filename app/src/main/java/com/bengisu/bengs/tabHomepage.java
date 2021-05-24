@@ -35,8 +35,6 @@ import java.util.List;
 import me.relex.circleindicator.CircleIndicator;
 
 public class tabHomepage extends Fragment {
-    //ViewPager viewPager;
-    //CircleIndicator circleIndicator;
     private RecyclerView sRecyclerView;
     private ShopsAdapter shopsAdapter;
     private List<Shops> sShops;
@@ -74,19 +72,6 @@ public class tabHomepage extends Fragment {
         showShops(view);
         return view;
     }
-    /*public void showAnnouncements(View view){
-        viewPager= view.findViewById(R.id.viewPager);
-        circleIndicator = view.findViewById(R.id.circleIndicator);
-
-        List<Integer> imageList = new ArrayList<>();
-        imageList.add(R.drawable.announcement1);
-        imageList.add(R.drawable.announcement2);
-        imageList.add(R.drawable.announcement3);
-
-        AnnouncementsAdapter myAdapter = new AnnouncementsAdapter(imageList);
-        viewPager.setAdapter(myAdapter);
-        circleIndicator.setViewPager(viewPager);
-    }*/
     private void loadImages() {
         dbfs.collection("Slider").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -130,6 +115,8 @@ public class tabHomepage extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot postSnapshot:snapshot.getChildren()){
                     Shops shop = new Shops(postSnapshot.child("image").getValue().toString());
+                    String name = postSnapshot.child("name").getValue().toString();
+                    shop.setShopName(name);
                     sShops.add(shop);
                 }
                 shopsAdapter= new ShopsAdapter(getActivity(),sShops);

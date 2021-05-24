@@ -7,27 +7,28 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-public class MyAdapter extends FragmentPagerAdapter {
+import org.jetbrains.annotations.NotNull;
 
+public class TabAdapterShops extends FragmentPagerAdapter {
     Context context;
     int totalTabs;
 
-    public MyAdapter(@NonNull FragmentManager fm) {
+    public TabAdapterShops(@NonNull @NotNull FragmentManager fm) {
         super(fm);
     }
-    public MyAdapter(Context c, FragmentManager fm, int totalTabs){
+    public TabAdapterShops(Context c, FragmentManager fm, int totalTabs){
         super(fm);
         context = c;
         this.totalTabs=totalTabs;
     }
 
     @NonNull
+    @NotNull
     @Override
     public Fragment getItem(int position) {
-        switch (position){
+        switch (position) {
             case 0:
-                tabHomepage tabHomepageFrag = new tabHomepage();
-                return tabHomepageFrag;
+                return new ShopFragment();
             case 1:
                 tabCategories tabCategoriesFrag = new tabCategories();
                 return tabCategoriesFrag;

@@ -19,6 +19,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.jetbrains.annotations.NotNull;
+
 public class tabAccount extends Fragment {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
@@ -31,31 +33,13 @@ public class tabAccount extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_account,container,false);
 
-        Button notifications = (Button)view.findViewById(R.id.account_notifications);
-        notifications.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentToNotifications = new Intent(getActivity(), ActivityNotifications.class);
-                startActivity(intentToNotifications);
-            }
-        });
         mAuth=FirebaseAuth.getInstance();
-
-        Button logout = (Button)view.findViewById(R.id.account_logout);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAuth.signOut();
-                Intent intentToLogin = new Intent(getActivity(), ActivityLogin.class);
-                startActivity(intentToLogin);
-                getActivity().finish();
-            }
-        });
-        hello(view);
         return view;
     }
-    public void hello(View view) {
-        //super.onStart();
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("Users").child(mAuth.getCurrentUser().getUid()).get()
                 .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -72,5 +56,25 @@ public class tabAccount extends Fragment {
                         }
                     }
                 });
+
+        Button notifications = (Button)view.findViewById(R.id.account_notifications);
+        notifications.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentToNotifications = new Intent(getActivity(), ActivityNotifications.class);
+                startActivity(intentToNotifications);
+            }
+        });
+
+        Button logout = (Button)view.findViewById(R.id.account_logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                Intent intentToLogin = new Intent(getActivity(), ActivityLogin.class);
+                startActivity(intentToLogin);
+                getActivity().finish();
+            }
+        });
     }
 }

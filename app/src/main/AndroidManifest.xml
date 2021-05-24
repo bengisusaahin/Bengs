@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bengisu.bengs">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,18 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bengs">
-        <activity android:name=".ActivityNotifications"></activity>
-        <activity android:name=".ActivitySignup"></activity>
-        <activity android:name=".ActivityLogin" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".ShopActivity"></activity>
+        <activity android:name=".ActivityNotifications" />
+        <activity android:name=".ActivitySignup" />
+        <activity android:name=".ActivityLogin">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".ActivityMain">
-
-        </activity>
+        <activity android:name=".ActivityMain"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

@@ -1,6 +1,7 @@
 package com.bengisu.bengs;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,15 @@ public class ShopsAdapter extends RecyclerView.Adapter<ShopsAdapter.ImageViewHol
         Shops shop = mShops.get(position);
         Picasso.get().load(shop.getShopImage()).placeholder(R.drawable.ic_launcher_background)
                 .fit().centerCrop().into(holder.shopImg);
+        holder.shopImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentToShopInside = new Intent(pContext,ShopActivity.class);
+                intentToShopInside.putExtra("currentShop",shop.getShopName());
+                pContext.startActivity(intentToShopInside);
+            }
+        });
+
     }
 
     @Override
