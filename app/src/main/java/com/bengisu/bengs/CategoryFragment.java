@@ -23,18 +23,15 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class ShopFragment extends Fragment {
-    RecyclerView shopRecyclerView;
-    DatabaseReference databaseReference;
-    String currentShop;
-    private List<Products> products;
-    private ProductsAdapter productsAdapter;
-
-    public ShopFragment() {
+public class CategoryFragment extends Fragment {
+    RecyclerView catRecyclerView;
+    DatabaseReference catDatabaseReference;
+    String catCurrentCategory;
+    private List<CategoryProducts> catProducts;
+    private CatProductsAdapter catProductsAdapter;
+    public CategoryFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,38 +39,41 @@ public class ShopFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_shop, container, false);
-        currentShop=getActivity().getIntent().getStringExtra("currentShop");
-        System.out.println(currentShop + " a tıklandı.");
-        showProducts(v);
-        return v;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View v = inflater.inflate(R.layout.fragment_category, container, false);
+        catCurrentCategory=getActivity().getIntent().getStringExtra("currentCategory");
+        System.out.println(catCurrentCategory + " aaaaa tıklandı.");
+        showCatProducts(v);
+        return v ;
     }
-    public void showProducts(View view){
-        shopRecyclerView= view.findViewById(R.id.shop_recyclerView);
-        shopRecyclerView.setNestedScrollingEnabled(false);
-        shopRecyclerView.setHasFixedSize(true);
+
+    public void showCatProducts(View v) {
+        catRecyclerView= v.findViewById(R.id.category_recyclerView);
+        catRecyclerView.setNestedScrollingEnabled(false);
+        catRecyclerView.setHasFixedSize(true);
 
         RecyclerView.LayoutManager layoutManager= new GridLayoutManager(getContext(),2);
-        shopRecyclerView.setLayoutManager(layoutManager);
+        catRecyclerView.setLayoutManager(layoutManager);
 
-        products=new ArrayList<>();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Shop").child(currentShop);
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        catProducts=new ArrayList<>();
+        catDatabaseReference = FirebaseDatabase.getInstance().getReference("Category").child(catCurrentCategory);
+        catDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for (DataSnapshot postSnapshot:snapshot.getChildren()){
                     //Products product = postSnapshot.getValue(Products.class);
                     //System.out.println(product.getProductName());
-                    Products product = new Products(postSnapshot.child("image").getValue().toString());
+                    CategoryProducts products = new CategoryProducts(postSnapshot.child("image").getValue().toString());
                     String name = postSnapshot.child("name").getValue().toString();
                     String price = postSnapshot.child("price").getValue().toString();
-                    product.setProductName(name);
-                    product.setProductPrice(price);
-                    products.add(product);
+                    products.setProductName(name);
+                    products.setProductPrice(price);
+                    catProducts.add(products);
                 }
-                productsAdapter= new ProductsAdapter(getContext(),products);
-                shopRecyclerView.setAdapter(productsAdapter);
+                catProductsAdapter= new CatProductsAdapter(getContext(),catProducts);
+                catRecyclerView.setAdapter(catProductsAdapter);
             }
 
             @Override

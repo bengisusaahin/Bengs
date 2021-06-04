@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bengs">
-        <activity android:name=".ShopActivity"></activity>
+        <activity
+            android:name=".CatProductsActivity"
+            android:label="@string/title_activity_cat_products"
+            android:theme="@style/Theme.Bengs.NoActionBar"></activity>
+        <activity android:name=".ShopActivity" />
         <activity android:name=".ActivityNotifications" />
         <activity android:name=".ActivitySignup" />
         <activity android:name=".ActivityLogin">
@@ -22,7 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityMain"></activity>
+        <activity android:name=".ActivityMain" />
 
         <meta-data
             android:name="preloaded_fonts"
