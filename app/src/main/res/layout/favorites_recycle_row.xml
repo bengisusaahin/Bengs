@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/products_cardView"
-        android:layout_width="180dp"
+        android:id="@+id/fav_cardView"
+        android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_gravity="center"
         android:layout_margin="5dp"
@@ -17,16 +16,16 @@
         tools:targetApi="lollipop">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/newProductsWrapper"
+            android:id="@+id/favProducts"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
 
             <ImageView
-                android:id="@+id/productImage"
-                android:layout_width="match_parent"
-                android:layout_height="236dp"
+                android:id="@+id/favProductImage"
+                android:layout_width="207dp"
+                android:layout_height="298dp"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:clickable="true"
                 android:focusable="true"
@@ -39,49 +38,46 @@
                 card_view:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/productName"
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginTop="8dp"
+                android:id="@+id/favProductName"
+                android:layout_width="175dp"
+                android:layout_height="250dp"
                 android:gravity="center"
                 android:textAlignment="textStart"
                 android:textColor="@android:color/holo_green_dark"
                 android:textSize="17sp"
-                card_view:layout_constraintBottom_toBottomOf="parent"
-                card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintHorizontal_bias="0.0"
-                card_view:layout_constraintStart_toStartOf="parent"
-                card_view:layout_constraintTop_toBottomOf="@+id/productImage"
+                card_view:layout_constraintBottom_toTopOf="@+id/favProductPrice"
+                card_view:layout_constraintEnd_toEndOf="@+id/favLikeButton"
+                card_view:layout_constraintHorizontal_bias="1.0"
+                card_view:layout_constraintStart_toEndOf="@+id/favProductImage"
+                card_view:layout_constraintTop_toTopOf="@+id/favProductImage"
                 card_view:layout_constraintVertical_bias="0.0" />
 
             <ImageButton
-                android:id="@+id/likeButton"
+                android:id="@+id/favLikeButton"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
                 android:src="@drawable/favorites"
                 android:visibility="visible"
-                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintBottom_toBottomOf="@+id/favProductPrice"
                 card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintHorizontal_bias="1.0"
-                card_view:layout_constraintStart_toEndOf="@+id/productPrice"
-                card_view:layout_constraintTop_toBottomOf="@+id/productName"
-                card_view:layout_constraintVertical_bias="0.0" />
+                card_view:layout_constraintHorizontal_bias="0.666"
+                card_view:layout_constraintStart_toEndOf="@+id/favProductPrice"
+                card_view:layout_constraintTop_toBottomOf="@+id/favProductName"
+                card_view:layout_constraintVertical_bias="1.0" />
 
             <TextView
-                android:id="@+id/productPrice"
+                android:id="@+id/favProductPrice"
                 android:layout_width="110dp"
                 android:layout_height="22dp"
-                android:layout_marginBottom="5dp"
                 android:gravity="center|top"
                 android:textAlignment="textStart"
-                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintBottom_toBottomOf="@+id/favProductImage"
                 card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintHorizontal_bias="0.0"
-                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintHorizontal_bias="0.178"
+                card_view:layout_constraintStart_toEndOf="@+id/favProductImage"
                 card_view:layout_constraintTop_toTopOf="parent"
-                card_view:layout_constraintVertical_bias="1.0" />
+                card_view:layout_constraintVertical_bias="0.978" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
@@ -20,6 +27,9 @@ import java.util.List;
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ImageViewHolder> {
     private Context pContext;
     private List<Products> products;
+    FirebaseAuth firebaseAuth;
+    DatabaseReference databaseReference;
+    FirebaseUser user;
 
     public ProductsAdapter(Context pContext, List<Products> products) {
         this.pContext = pContext;
@@ -31,6 +41,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ImageV
     @Override
     public ProductsAdapter.ImageViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(pContext).inflate(R.layout.products_recycle_row,parent,false);
+        firebaseAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        user = firebaseAuth.getCurrentUser();
         return new ImageViewHolder(view);
     }
 
@@ -41,7 +54,36 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ImageV
                 .fit().centerCrop().into(holder.productImage);
         holder.productName.setText(product.getProductName());
         holder.productPrice.setText(product.getProductPrice());
-        holder.likeButton.setImageResource(R.drawable.favorites);
+        //holder.likeButton.setImageResource(R.drawable.favorites);
+        holder.likeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.count ++;
+                Favorite favorite = new Favorite(product.getProductName(),product.getProductImage(),product.getProductPrice());
+
+                if (holder.count % 2 !=0){
+                    holder.likeButton.setImageResource(R.drawable.favorites_added);
+                    databaseReference.child("Favorites").child(user.getUid()).child(product.getProductName()).setValue(favorite);
+                }else {
+                    holder.likeButton.setImageResource(R.drawable.favorites);
+                    databaseReference.child("Favorites").child(user.getUid()).child(product.getProductName()).removeValue();
+                }
+            }
+        });
+        databaseReference.child("Favorites").child(user.getUid()).child(product.getProductName()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    holder.likeButton.setImageResource(R.drawable.favorites_added);
+                    holder.count ++;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override
@@ -54,6 +96,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ImageV
         public TextView productName;
         public TextView productPrice;
         public ImageButton likeButton;
+        public int count;
 
         public ImageViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
@@ -61,6 +104,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ImageV
             this.productName = itemView.findViewById(R.id.productName);
             this.productPrice = itemView.findViewById(R.id.productPrice);
             this.likeButton = itemView.findViewById(R.id.likeButton);
+            count= 0;
         }
     }
 }

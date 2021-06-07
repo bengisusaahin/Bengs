@@ -37,7 +37,7 @@ public class CatProductsActivity extends AppCompatActivity {
         final TabAdapterCategories adapter= new TabAdapterCategories(getSupportFragmentManager(),this,catProductsTabLayout.getTabCount());
         catProductsViewPager.setAdapter(adapter);
         catProductsViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(catProductsTabLayout));
-
+        catProductsViewPager.setCurrentItem(1);
         catProductsTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
