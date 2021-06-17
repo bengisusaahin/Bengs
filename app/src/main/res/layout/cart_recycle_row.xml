@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cart_cardView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:elevation="3dp"
+        card_view:cardCornerRadius="2dp"
+        tools:targetApi="lollipop">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cartProducts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <Button
+                android:id="@+id/decreaseProduct"
+                android:layout_width="57dp"
+                android:layout_height="46dp"
+                android:text="-"
+                card_view:layout_constraintBottom_toTopOf="@+id/total"
+                card_view:layout_constraintEnd_toEndOf="@+id/cartProductName"
+                card_view:layout_constraintTop_toBottomOf="@+id/cartProductName" />
+
+            <ImageView
+                android:id="@+id/cartProductImage"
+                android:layout_width="207dp"
+                android:layout_height="298dp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="fitXY"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintHorizontal_bias="0.0"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent"
+                card_view:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/cartProductName"
+                android:layout_width="172dp"
+                android:layout_height="197dp"
+                android:gravity="center"
+                android:textAlignment="textStart"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="17sp"
+                card_view:layout_constraintBottom_toTopOf="@+id/cart_productPrice"
+                card_view:layout_constraintEnd_toEndOf="@+id/cart_deleteButton"
+                card_view:layout_constraintHorizontal_bias="1.0"
+                card_view:layout_constraintStart_toEndOf="@+id/cartProductImage"
+                card_view:layout_constraintTop_toTopOf="@+id/cartProductImage"
+                card_view:layout_constraintVertical_bias="0.0" />
+
+            <ImageButton
+                android:id="@+id/cart_deleteButton"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginEnd="2dp"
+                android:src="@drawable/delete"
+                android:visibility="visible"
+                card_view:layout_constraintBottom_toBottomOf="@+id/cart_productPrice"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintHorizontal_bias="0.666"
+                card_view:layout_constraintStart_toEndOf="@+id/cart_productPrice"
+                card_view:layout_constraintTop_toBottomOf="@+id/cartProductName"
+                card_view:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/cart_productPrice"
+                android:layout_width="110dp"
+                android:layout_height="22dp"
+                android:gravity="center|top"
+                android:textAlignment="textStart"
+                card_view:layout_constraintBottom_toBottomOf="@+id/cartProductImage"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintHorizontal_bias="0.178"
+                card_view:layout_constraintStart_toEndOf="@+id/cartProductImage"
+                card_view:layout_constraintTop_toTopOf="parent"
+                card_view:layout_constraintVertical_bias="0.978" />
+
+            <Button
+                android:id="@+id/increaseProduct"
+                android:layout_width="57dp"
+                android:layout_height="46dp"
+                android:text="+"
+                card_view:layout_constraintBottom_toBottomOf="@+id/decreaseProduct"
+                card_view:layout_constraintEnd_toStartOf="@+id/decreaseProduct"
+                card_view:layout_constraintHorizontal_bias="0.0"
+                card_view:layout_constraintStart_toStartOf="@+id/cartProductName"
+                card_view:layout_constraintTop_toTopOf="@+id/decreaseProduct" />
+
+            <TextView
+                android:id="@+id/currentAmount"
+                android:layout_width="30dp"
+                android:layout_height="17dp"
+                card_view:layout_constraintBottom_toBottomOf="@+id/increaseProduct"
+                card_view:layout_constraintEnd_toStartOf="@+id/decreaseProduct"
+                card_view:layout_constraintHorizontal_bias="0.678"
+                card_view:layout_constraintStart_toEndOf="@+id/increaseProduct"
+                card_view:layout_constraintTop_toTopOf="@+id/increaseProduct"
+                card_view:layout_constraintVertical_bias="0.482" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

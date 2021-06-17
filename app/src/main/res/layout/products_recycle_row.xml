@@ -68,7 +68,16 @@
                 card_view:layout_constraintStart_toEndOf="@+id/productPrice"
                 card_view:layout_constraintTop_toBottomOf="@+id/productName"
                 card_view:layout_constraintVertical_bias="0.0" />
-
+            <ImageButton
+                android:id="@+id/cartButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/addtocart"
+                android:visibility="visible"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintEnd_toStartOf="@+id/likeButton"
+                card_view:layout_constraintStart_toEndOf="@+id/productPrice"
+                card_view:layout_constraintTop_toTopOf="@+id/likeButton" />
             <TextView
                 android:id="@+id/productPrice"
                 android:layout_width="110dp"

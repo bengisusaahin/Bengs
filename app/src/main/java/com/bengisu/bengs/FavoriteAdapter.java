@@ -1,6 +1,7 @@
 package com.bengisu.bengs;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,6 +68,8 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ImageV
             }
         });
 
+
+
         Picasso.get().load(favProduct.getProductImage()).placeholder(R.drawable.ic_launcher_background)
                 .fit().centerCrop().into(holder.favProductImage);
 
@@ -79,6 +82,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ImageV
                 if(holder.count % 2 != 0) {
                     holder.likeButton.setImageResource(R.drawable.favorites_added);
                     databaseReference.child("Favorites").child(firebaseUser.getUid()).child(favProduct.getProductName()).setValue(favorite);
+
                 }
 
                 else {
@@ -89,6 +93,8 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ImageV
 
             }
         });
+        /*Intent intent = new Intent (context,ActivityMain.class);
+        context.startActivity(intent);*/
     }
 
     @Override

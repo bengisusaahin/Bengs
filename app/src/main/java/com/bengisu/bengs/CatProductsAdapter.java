@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -80,12 +81,52 @@ public class CatProductsAdapter extends RecyclerView.Adapter<CatProductsAdapter.
                 if (holder.count % 2 !=0){
                     holder.likeButton.setImageResource(R.drawable.favorites_added);
                     databaseReference.child("Favorites").child(user.getUid()).child(product.getProductName()).setValue(favorite);
+
                 }else {
                     holder.likeButton.setImageResource(R.drawable.favorites);
                     databaseReference.child("Favorites").child(user.getUid()).child(product.getProductName()).removeValue();
                 }
+                Intent intent = new Intent (cContext,ActivityMain.class);
+                cContext.startActivity(intent);
+            }
+
+        });
+
+
+        holder.cartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference cartReference = databaseReference.child("Cart").child(user.getUid()).
+                        child(product.getProductName());
+
+                ProductInCart productInCart = new ProductInCart(product.getProductName(),
+                        product.getProductImage(),product.getProductPrice(),1);
+                cartReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (!snapshot.exists()){
+                            cartReference.setValue(productInCart);
+                            Toast.makeText(v.getContext(), "You"+productInCart.getProductName() + " added to cart!",
+                                    Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent (cContext,ActivityMain.class);
+                            cContext.startActivity(intent);
+                        }
+                        else
+                            Toast.makeText(v.getContext(), "You have already added the " + productInCart.getProductName()
+                                    + "  to your cart." , Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
             }
         });
+
+
     }
 
 
@@ -100,6 +141,7 @@ public class CatProductsAdapter extends RecyclerView.Adapter<CatProductsAdapter.
         public TextView productName;
         public TextView productPrice;
         public ImageButton likeButton;
+        public ImageButton cartButton;
         public int count;
 
         public ImageViewHolder(@NonNull @NotNull View itemView) {
@@ -108,6 +150,7 @@ public class CatProductsAdapter extends RecyclerView.Adapter<CatProductsAdapter.
             this.productName = itemView.findViewById(R.id.catProductName);
             this.productPrice = itemView.findViewById(R.id.catProductPrice);
             this.likeButton = itemView.findViewById(R.id.catLikeButton);
+            this.cartButton = itemView.findViewById(R.id.catCartButton);
             count=0;
         }
     }
