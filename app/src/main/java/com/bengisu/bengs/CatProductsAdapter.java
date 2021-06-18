@@ -55,7 +55,6 @@ public class CatProductsAdapter extends RecyclerView.Adapter<CatProductsAdapter.
                 .fit().centerCrop().into(holder.productImage);
         holder.productName.setText(product.getProductName());
         holder.productPrice.setText(product.getProductPrice());
-        //holder.likeButton.setImageResource(R.drawable.favorites);
 
         databaseReference.child("Favorites").child(user.getUid()).child(product.getProductName()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -106,7 +105,7 @@ public class CatProductsAdapter extends RecyclerView.Adapter<CatProductsAdapter.
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (!snapshot.exists()){
                             cartReference.setValue(productInCart);
-                            Toast.makeText(v.getContext(), "You"+productInCart.getProductName() + " added to cart!",
+                            Toast.makeText(v.getContext(), "You added "+productInCart.getProductName() + " to the cart!",
                                     Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent (cContext,ActivityMain.class);
                             cContext.startActivity(intent);

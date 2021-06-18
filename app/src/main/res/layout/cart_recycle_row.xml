@@ -26,9 +26,9 @@
                 android:id="@+id/decreaseProduct"
                 android:layout_width="57dp"
                 android:layout_height="46dp"
+                android:layout_marginTop="12dp"
                 android:text="-"
-                card_view:layout_constraintBottom_toTopOf="@+id/total"
-                card_view:layout_constraintEnd_toEndOf="@+id/cartProductName"
+                card_view:layout_constraintStart_toStartOf="@+id/cartProductName"
                 card_view:layout_constraintTop_toBottomOf="@+id/cartProductName" />
 
             <ImageView
@@ -94,21 +94,19 @@
                 android:layout_height="46dp"
                 android:text="+"
                 card_view:layout_constraintBottom_toBottomOf="@+id/decreaseProduct"
-                card_view:layout_constraintEnd_toStartOf="@+id/decreaseProduct"
-                card_view:layout_constraintHorizontal_bias="0.0"
-                card_view:layout_constraintStart_toStartOf="@+id/cartProductName"
+                card_view:layout_constraintEnd_toEndOf="@+id/cartProductName"
+                card_view:layout_constraintStart_toEndOf="@+id/currentAmount"
                 card_view:layout_constraintTop_toTopOf="@+id/decreaseProduct" />
 
             <TextView
                 android:id="@+id/currentAmount"
                 android:layout_width="30dp"
                 android:layout_height="17dp"
-                card_view:layout_constraintBottom_toBottomOf="@+id/increaseProduct"
-                card_view:layout_constraintEnd_toStartOf="@+id/decreaseProduct"
-                card_view:layout_constraintHorizontal_bias="0.678"
-                card_view:layout_constraintStart_toEndOf="@+id/increaseProduct"
-                card_view:layout_constraintTop_toTopOf="@+id/increaseProduct"
-                card_view:layout_constraintVertical_bias="0.482" />
+                android:layout_marginStart="16dp"
+                card_view:layout_constraintBottom_toBottomOf="@+id/decreaseProduct"
+                card_view:layout_constraintStart_toEndOf="@+id/decreaseProduct"
+                card_view:layout_constraintTop_toTopOf="@+id/decreaseProduct"
+                card_view:layout_constraintVertical_bias="0.413" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

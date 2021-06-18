@@ -56,7 +56,6 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ImageV
                 .fit().centerCrop().into(holder.productImage);
         holder.productName.setText(product.getProductName());
         holder.productPrice.setText(product.getProductPrice());
-        //holder.likeButton.setImageResource(R.drawable.favorites);
         holder.likeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +102,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ImageV
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (!snapshot.exists()){
                             cartReference.setValue(productInCart);
-                            Toast.makeText(v.getContext(), "You"+productInCart.getProductName() + " added to cart!",
+                            Toast.makeText(v.getContext(), "You added "+productInCart.getProductName() + " to the cart.",
                                     Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent (pContext,ActivityMain.class);
                             pContext.startActivity(intent);

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".FinishShopping">
+
+    <EditText
+        android:id="@+id/deliveryAddress"
+        android:layout_width="409dp"
+        android:layout_height="164dp"
+        android:ems="10"
+        android:fontFamily="cursive"
+        android:inputType="textPersonName"
+
+        android:text="Delivery Address:"
+        android:textColor="#673AB7"
+        app:layout_constraintBottom_toTopOf="@+id/nameOfRecipient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="cursive"
+        android:text="My Cart"
+        android:textColor="#673AB7"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/phoneNumber"
+        android:layout_width="353dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Phone of Recipient"
+        android:fontFamily="cursive"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/policy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameOfRecipient"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/totalPrice"
+        android:layout_width="149dp"
+        android:layout_height="35dp"
+        android:fontFamily="cursive"
+        android:padding="6dp"
+        android:text="Total Price:"
+        android:textColor="@color/purple_700"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/confirmAndFinish"
+        app:layout_constraintEnd_toStartOf="@+id/confirmAndFinish"
+        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/confirmAndFinish"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/nameOfRecipient"
+        android:layout_width="353dp"
+        android:layout_height="71dp"
+        android:ems="10"
+        android:fontFamily="cursive"
+        android:hint="Name of Recipient"
+        android:inputType="textPersonName"
+        android:textColor="#673AB7"
+        app:layout_constraintBottom_toTopOf="@+id/policy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.565" />
+
+    <TextView
+        android:id="@+id/policy"
+        android:layout_width="351dp"
+        android:layout_height="24dp"
+        android:fontFamily="cursive"
+        android:text="I have read and approve the preliminary."
+        android:textAlignment="center"
+        android:textColor="@color/purple_700"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.821" />
+
+    <Button
+        android:id="@+id/confirmAndFinish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Confirm and Finish"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.925"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/policy" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="149dp"
+        android:layout_height="26dp"
+        app:layout_constraintBottom_toBottomOf="@+id/confirmAndFinish"
+        app:layout_constraintEnd_toEndOf="@+id/totalPrice"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/totalPrice"
+        app:layout_constraintTop_toBottomOf="@+id/totalPrice"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,7 +34,6 @@ public class tabCart extends Fragment {
     CartAdapter userCartAdapter;
     FirebaseUser user;
     TextView totalPrice;
-    Button confirmCart;
 
     public tabCart(){
 
@@ -50,9 +49,6 @@ public class tabCart extends Fragment {
         user = firebaseAuth.getCurrentUser();
 
         totalPrice = v.findViewById(R.id.total);
-        confirmCart = v.findViewById(R.id.confirmCart);
-
-        //getUserInfo(v);
 
         showCart(v);
         return v;
@@ -61,7 +57,6 @@ public class tabCart extends Fragment {
     public void showCart(View v) {
         cartRecyclerView= v.findViewById(R.id.cart_recyclerView);
         cartRecyclerView.setHasFixedSize(true);
-
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(),1);
         cartRecyclerView.setLayoutManager(mLayoutManager);
@@ -89,16 +84,5 @@ public class tabCart extends Fragment {
 
             }
         });
-
-        /*confirmCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goToCompleteShopping = new Intent(getActivity(), CompleteShopping.class);
-                TextView totalAmount = v.findViewById(R.id.total);
-                String s = totalAmount.getText().toString();
-                String[] array = s.split("\\$");
-                System.out.println(array[0]);
-            }
-        });*/
     }
 }

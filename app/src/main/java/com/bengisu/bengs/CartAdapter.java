@@ -26,6 +26,7 @@ import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ImageViewHolder>{
@@ -37,12 +38,13 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ImageViewHolde
     TextView total;
     double totalPrice = 0;
     Button confirmAndFinish;// ama bunun burda olmaması gerek ki sepetteki ürünlerin nasıl görünecğini ayarladığımız adapter değil mi bu
+    private static DecimalFormat decimalFormat=new DecimalFormat("#.##");
 
     public CartAdapter(Context context, List<ProductInCart> productInCart, View view) {
         this.context = context;
         this.productInCart = productInCart;
         this.total = view.findViewById(R.id.total);
-        //this.confirmAndFinish = view.findViewById(R.id.completeShoppingButton);
+        this.confirmAndFinish = view.findViewById(R.id.confirmCart);
     }
 
     @NonNull
@@ -80,8 +82,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ImageViewHolde
                     holder.currentAmount.setText(currAmount[0] + "");
                     double totalPriceOfCurrentProduct = currAmount[0] * Double.parseDouble(currProductPrice);
                     totalPrice += totalPriceOfCurrentProduct;
-                    total.setText(totalPrice + " TL");
-
+                    total.setText(decimalFormat.format(totalPrice) + " TL");
                     holder.productPrice.setText((Double.parseDouble(currProductPrice)) * currAmount[0] + " TL");
                 }
                 else
@@ -162,19 +163,17 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ImageViewHolde
                 });
             }
         });
-        /*confirmAndFinish.setOnClickListener(new View.OnClickListener() {
+        confirmAndFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToCompleteShopping = new Intent(context, CompleteShopping.class);
-                String s = totalPriceText.getText().toString();
-                String[] array = s.split("\\$");
+                Intent goToFinishShopping = new Intent(context, FinishShopping.class);
+                String s = total.getText().toString();
+                String[] array = s.split(" TL");
                 System.out.println(array[0]);
-                goToCompleteShopping.putExtra("totalPrice", array[0] +"");
-                v.getContext().startActivity(goToCompleteShopping);
-
+                goToFinishShopping.putExtra("totalPrice", array[0] +"");
+                v.getContext().startActivity(goToFinishShopping);
             }
-        });*/
-
+        });
     }
 
     @Override
