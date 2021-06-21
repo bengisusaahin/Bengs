@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -63,6 +65,55 @@ public class tabAccount extends Fragment {
             public void onClick(View v) {
                 Intent intentToNotifications = new Intent(getActivity(), ActivityNotifications.class);
                 startActivity(intentToNotifications);
+            }
+        });
+
+        Button personDetails = (Button)view.findViewById(R.id.account_details);
+        personDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentToDetails = new Intent(getActivity(), ActivityDetails.class);
+                startActivity(intentToDetails);
+            }
+        });
+
+        Button settings = (Button)view.findViewById(R.id.account_settings);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentToSettings = new Intent(getActivity(), ActivitySettings.class);
+                startActivity(intentToSettings);
+            }
+        });
+
+        /*Button favorites = (Button)view.findViewById(R.id.account_favorites);
+        favorites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                    tabFavorites favorites = new tabFavorites();
+                    fragmentTransaction.replace(R.id.viewPager,favorites).commit();
+
+            }
+        });*/
+
+        Button messages = (Button)view.findViewById(R.id.account_messages);
+        messages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentToSettings = new Intent(getActivity(), ActivityMessages.class);
+                startActivity(intentToSettings);
+            }
+        });
+
+        Button help = (Button)view.findViewById(R.id.account_help);
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentToSettings = new Intent(getActivity(), ActivityHelp.class);
+                startActivity(intentToSettings);
             }
         });
 

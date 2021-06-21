@@ -17,8 +17,12 @@
             android:label="@string/title_activity_cat_products"
             android:theme="@style/Theme.Bengs.NoActionBar"></activity>
         <activity android:name=".ShopActivity" />
+        <activity android:name=".ActivityHelp" />
         <activity android:name=".FinishShopping" />
+        <activity android:name=".ActivityDetails" />
+        <activity android:name=".ActivitySettings" />
         <activity android:name=".ActivityNotifications" />
+        <activity android:name=".ActivityMessages" />
         <activity android:name=".ActivitySignup" />
         <activity android:name=".ActivityLogin">
             <intent-filter>
