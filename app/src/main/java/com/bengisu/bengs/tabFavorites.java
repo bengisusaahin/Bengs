@@ -51,7 +51,6 @@ public class tabFavorites extends Fragment {
         user = firebaseAuth.getCurrentUser();
 
         showFavorites(v);
-        //getUserInfo(v);
         return v;
     }
 
@@ -82,17 +81,4 @@ public class tabFavorites extends Fragment {
             }
         });
     }
-
-    /*public void getUserInfo(View v) {
-        databaseReference.child("Users").child(firebaseAuth.getUid()).get()
-                .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
-                        if (task.isSuccessful()){
-                            Users user =task.getResult().getValue(Users.class);
-                            TextView textView = v.findViewById(R.id.)
-                        }
-                    }
-                });
-    }*/
 }
