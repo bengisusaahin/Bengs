@@ -14,7 +14,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginActivity extends AppCompatActivity {
+public class ActivityLogin extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
@@ -30,13 +30,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if(mAuth.getCurrentUser()!=null){ //When app is start, we see Homepage(now logout)
-            Intent mainIntent = new Intent(this,MainActivity.class);
+            Intent mainIntent = new Intent(this, ActivityMain.class);
             startActivity(mainIntent);
         }
     }
 
     public void navigateUser(View view){
-        Intent intent=new Intent(this,SignupActivity.class);
+        Intent intent=new Intent(this, ActivitySignup.class);
         startActivity(intent);
     }
 
@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         EditText editTextPassword=(EditText) findViewById(R.id.login_editTextPassword);
         String password= editTextPassword.getText().toString();
 
-        Intent mainIntent = new Intent(this,MainActivity.class);
+        Intent mainIntent = new Intent(this, ActivityMain.class);
 
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     startActivity(mainIntent);
                 }else{//email formatını kontrol ediyor
-                    Toast.makeText(LoginActivity.this,task.getException().getMessage() , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityLogin.this,task.getException().getMessage() , Toast.LENGTH_SHORT).show();
                 }
             }
         });

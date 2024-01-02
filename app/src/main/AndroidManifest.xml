@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bengisu.bengs">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,22 +12,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bengs">
-        <activity android:name=".SignupActivity">
-
-        </activity>
-        <activity android:name=".LoginActivity" >
-        <activity android:name=".HomepageActivity">
+        <activity
+            android:name=".CatProductsActivity"
+            android:label="@string/title_activity_cat_products"
+            android:theme="@style/Theme.Bengs.NoActionBar"></activity>
+        <activity android:name=".ShopActivity" />
+        <activity android:name=".ActivityHelp" />
+        <activity android:name=".FinishShopping" />
+        <activity android:name=".ActivityDetails" />
+        <activity android:name=".ActivitySettings" />
+        <activity android:name=".ActivityNotifications" />
+        <activity android:name=".ActivityMessages" />
+        <activity android:name=".ActivitySignup" />
+        <activity android:name=".ActivityLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ActivityMain" />
 
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
